@@ -1,11 +1,7 @@
 #include "header.h"
-void error_handling ();
-void text_padding ();
-
 
 char choice;
 std::string text, key;
-
 
 int main () {
     // user prompts
@@ -23,15 +19,3 @@ int main () {
     std::cout << "text begins |" << des(text, key, choice == 'd') << "| text ends" << std::endl;
 }
 
-
-void error_handling () {
-    if (key.size() != 8 or (choice != 'e' and choice != 'd')) {
-        std::cout << "<<< ERROR >>>" << std::endl;
-        exit(EXIT_FAILURE);
-    }
-}
-
-void text_padding () {
-   while (text.size() % 8 != 0)
-        text.push_back(' ');
-}
