@@ -6,4 +6,5 @@
 
 
 // function prototypes
+std::string des (const std::string&, const std::string&, int);
 
