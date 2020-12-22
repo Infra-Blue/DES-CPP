@@ -1,7 +1,6 @@
 #include "header.h"
 void error_handling ();
 void text_padding ();
-// enum {ENCRYPT, DECRYPT};
 
 
 char choice;
