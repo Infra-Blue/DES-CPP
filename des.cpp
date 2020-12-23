@@ -8,7 +8,7 @@ std::bitset<64> block (const std::bitset<64> &raw) {
     std::bitset<32> left, right;
     std::bitset<64> ripe;
     
-    // splitting raw 64-bits into two
+    // splitting raw 64-bits into two 
     for (int i = 0; i < 32; ++i) {
         left[i] = raw[i];
         right[i] = raw[i + 32];
