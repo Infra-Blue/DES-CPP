@@ -29,20 +29,30 @@ std::vector<std::bitset<48>> generate_sub_keys (const std::string &key) {
                            38, 55, 33, 52, 45, 41, 49, 35, 28, 31 };
     
     std::vector<std::bitset<48>> sub_keys(16);
-    std::bitset<28> left, right;
+    std::bitset<28> left_1, right_1;
+    std::bitset<24> left_2, right_2;
     
     // generating 48-bit keys
     for (auto &sk : sub_keys) {
+        // 64 to 56
         for (int i = 0; i < 28; ++i) {
-            left[i] = left[pc_1_left[i]];
-            right[i] = right[pc_1_right[i]];
+            left_1[i] = bit_key[pc_1_left[i]];
+            right_1[i] = bit_key[pc_1_right[i]];
         }
-        rotate(left);
-        rotate(right);
+        
+        rotate(left_1);
+        rotate(right_1);
+        
+        // 56 to 48
         for (int i = 0; i < 24; ++i) {
-            left[i] = left[pc_2[i]];
-            right[i] = right[pc_2[i + 24]];
+            left_2[i] = left_1[pc_2[i]];
+            right_2[i] = right_1[pc_2[i + 24]];
         }
 
+        // combining
+        for (int i = 0; i < 24; ++i) {
+            sk[i] = left_2[i];
+            sk[i + 24] = right_2[i];
+        }
     }
 }
