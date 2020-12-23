@@ -36,7 +36,8 @@ std::bitset<64> block (const std::bitset<64> &raw) {
 std::string des (const std::string& text, const std::string& key, int MODE) {
     std::string output;
     sub_keys = generate_sub_keys(key, MODE);
-        
+    
+    
 
     return "";
 }
