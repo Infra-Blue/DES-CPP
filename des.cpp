@@ -37,8 +37,11 @@ std::string des (const std::string& text, const std::string& key, int MODE) {
     std::string output;
     sub_keys = generate_sub_keys(key, MODE);
     
-    for (int i = 0, sz = text.size(); i < sz; i += 8)
-        output.append( block(str_to_bits(text.substr(i, 8))).to_string());
+    if (MODE == ENCRYPT) for (int i = 0, sz = text.size(); i < sz; i += 8)
+        output.append(block(str_to_bits(text.substr(i, 8))).to_string());
+
+    else for (int i = 0, sz = text.size(); i < sz; i += 64)
+        output.append(bits_to_str(block(std::bitset<64>(text.substr(i, 64)))));
 
     output.push_back('\0');
     return output;

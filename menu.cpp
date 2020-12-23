@@ -7,7 +7,7 @@ int main () {
     // user prompts
     std::cout << "< DES Encryption >\nEnter your choice <e to encrypt, d to decrypt>: ";        
     std::cin >> choice;
-    std::cout << "Enter Text: ";
+    std::cout << "Enter Text (No WhiteSpace): ";
     std::cin >> text;
     std::cout << "Enter Key (Must be 8 alphanumeric characters): ";
     std::cin >> key;
