@@ -9,7 +9,7 @@ void rotate (std::bitset<28> &block) {
 }
 
 
-std::vector<std::bitset<48>> generate_sub_keys (const std::string &key) {
+std::vector<std::bitset<48>> generate_sub_keys (const std::string &key, int MODE) {
     // converting key-string for bitwise operation
     int i = 0;
     std::bitset<64> bit_key;
@@ -32,14 +32,16 @@ std::vector<std::bitset<48>> generate_sub_keys (const std::string &key) {
     std::bitset<28> left_1, right_1;
     std::bitset<24> left_2, right_2;
     
+    // 64 to 56 ~ ONLY ONCE
+    for (int i = 0; i < 28; ++i) {
+        left_1[i] = bit_key[pc_1_left[i]];
+        right_1[i] = bit_key[pc_1_right[i]];
+    }
+    
     // generating 48-bit keys
-    for (auto &sk : sub_keys) {
-        // 64 to 56
-        for (int i = 0; i < 28; ++i) {
-            left_1[i] = bit_key[pc_1_left[i]];
-            right_1[i] = bit_key[pc_1_right[i]];
-        }
-        
+    for (int i = 0; i < 16; ++i) {
+        auto &sk = (MODE ? sub_keys[15 - i] : sub_keys[i]);   // shedule-direction depends on MODE (Encryption / Decryption)   
+
         rotate(left_1);
         rotate(right_1);
         
@@ -55,4 +57,6 @@ std::vector<std::bitset<48>> generate_sub_keys (const std::string &key) {
             sk[i + 24] = right_2[i];
         }
     }
+
+    return sub_keys;
 }
