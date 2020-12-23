@@ -3,7 +3,7 @@
 extern char choice;
 extern std::string text, key;
 
-                 /**************** Helper Functions *****************/
+                 /**************** Helper Functions *****************/ 
 
 void error_handling () {
     if (key.size() != 8 or (choice != 'e' and choice != 'd')) {
