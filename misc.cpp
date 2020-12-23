@@ -42,7 +42,8 @@ std::string bits_to_str (const std::bitset<64> &b) {
     for (int i = 0; i < 64; i += 8) {
         int mask = 1, c = 0;
         for(int j = i + 7; j >= i; --j) {
-            c += (mask & b[j]) * mask;
+            if(b.test(j))
+                c += mask;
             mask <<= 1;
         }
         s.push_back((char)c);
