@@ -33,3 +33,6 @@
 
 # vscode metadata
 .vscode/
+
+# meta program
+help.cpp

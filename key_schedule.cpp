@@ -10,17 +10,7 @@ void rotate (std::bitset<28> &block) {
 
 // this function constructs 16 48-bit sub-keys from a single key-string
 std::vector<std::bitset<48>> generate_sub_keys (const std::string &key, int MODE) {
-    // converting key-string for bitwise operation
-    int i = 0;
-    std::bitset<64> bit_key;
-    for (int c : key) {
-        int plate = 1 << 7;
-        while(plate) {
-            bit_key[i] = plate & c;
-            plate >>= 1;
-            ++i;
-        }
-    }
+    std::bitset<64> bit_key (str_to_bits(key));  // converting key-string for bitwise operation
 
     // S-tables for PC-1 and PC-2
     std::vector<int> pc_1_left{ 56, 48, 40, 32, 24, 16, 8, 0, 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35 },
