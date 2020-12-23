@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <bitset>
+#include <algorithm>
 
 // typedefs
 using vec = std::vector<int>;
