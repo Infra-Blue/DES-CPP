@@ -6,7 +6,6 @@ enum {ENCRYPT, DECRYPT};
 std::string des (const std::string& text, const std::string& key, int MODE) {
     std::string output;
     
-    // std::vector<bool> a()
 
     return "";
 }
