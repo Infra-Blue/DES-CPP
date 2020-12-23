@@ -8,18 +8,22 @@ std::bitset<64> block (const std::bitset<64> &raw) {
     std::bitset<32> left, right;
     std::bitset<64> ripe;
     
+    // splitting raw 64-bits into two
     for (int i = 0; i < 32; ++i) {
         left[i] = raw[i];
         right[i] = raw[i + 32];
     }
 
+    // 15 rounds
     for (int i = 0; i < 15; ++i) {
         left ^= round (right, sub_keys[i]);
         std::swap (left, right);
     }
 
+    // last round ~ no swap
     left ^= round (right, sub_keys[15]);
 
+    // raw recombined into ripe
     for (int i = 0; i < 32; ++i) {
         ripe[i] = left[i];
         ripe[i + 32] = right[i];
