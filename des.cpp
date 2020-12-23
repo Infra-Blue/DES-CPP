@@ -37,9 +37,11 @@ std::string des (const std::string& text, const std::string& key, int MODE) {
     std::string output;
     sub_keys = generate_sub_keys(key, MODE);
     
-    
+    for (int i = 0, sz = text.size(); i < sz; i += 8)
+        output.append( block(str_to_bits(text.substr(i, 8))).to_string());
 
-    return "";
+    output.push_back('\0');
+    return output;
 }
 
 

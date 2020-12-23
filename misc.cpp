@@ -3,6 +3,7 @@
 extern char choice;
 extern std::string text, key;
 
+                 /**************** Helper Functions *****************/
 
 void error_handling () {
     if (key.size() != 8 or (choice != 'e' and choice != 'd')) {
@@ -11,10 +12,12 @@ void error_handling () {
     }
 }
 
+
 void text_padding () {
    while (text.size() % 8 != 0)
         text.push_back(' ');
 }
+
 
 std::bitset<64> str_to_bits (const std::string& s) {
     std::bitset<64> bs;
@@ -32,3 +35,18 @@ std::bitset<64> str_to_bits (const std::string& s) {
     return bs;
 }
 
+
+std::string bits_to_str (const std::bitset<64> &b) {
+    std::string s;
+    
+    for (int i = 0; i < 64; i += 8) {
+        int mask = 1, c = 0;
+        for(int j = i + 7; j >= i; --j) {
+            c += (mask & b[j]) * mask;
+            mask <<= 1;
+        }
+        s.push_back((char)c);
+    }
+    
+    return s;
+}
