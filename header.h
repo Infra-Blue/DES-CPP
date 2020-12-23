@@ -6,12 +6,10 @@
 #include <vector>
 #include <bitset>
 
-// using vec = std::vector<int>;
-// using string = std::string;
-// using bits_32 = std::bitset<32>;
-// using bits_48 = std::bitset<48>;
-// using bits_64 = std::bitset<64>;
-
+// typedefs
+using vec = std::vector<int>;
+using vec2D = std::vector<vec>;
+using vec3D = std::vector<vec2D>;
 
 // function prototypes
 void error_handling ();
