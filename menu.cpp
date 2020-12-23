@@ -4,7 +4,7 @@ char choice;
 std::string text, key;
 
 int main () {
-    // user prompts
+    // user prompts 
     std::cout << "< DES Encryption >\nEnter your choice <e to encrypt, d to decrypt>: ";        
     std::cin >> choice;
     std::cout << "Enter Text (No WhiteSpace): ";
