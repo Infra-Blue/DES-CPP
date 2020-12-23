@@ -2,7 +2,7 @@
 enum {ENCRYPT, DECRYPT};
 
 
-void rotate (std::bitset<28> &block) {
+void rotate (std::bitset<28> &block) { 
     int rightMost = block[0];
     block >>= 1;
     block[27] = rightMost;
