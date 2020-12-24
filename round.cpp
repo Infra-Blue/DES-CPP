@@ -1,9 +1,9 @@
 #include "header.h"
 
 
-std::bitset<32> round (const std::bitset<32> &half_block, const std::bitset<48> &sub_key) {
+bitset<32> round (const bitset<32> &half_block, const bitset<48> &sub_key) {
     vec3D s_box(8, vec2D(4, vec(16, 0)));
-    std::bitset<48> expanded_block;
+    bitset<48> expanded_block;
 
     vec expansion { 31, 0, 1, 2, 3, 4, 3, 4, 5, 6, 7, 8, 7, 8, 9, 10, 11, 12, 11, 12, 13,
                     14, 15, 16, 15, 16, 17, 18, 19, 20, 19, 20, 21, 22, 23, 24, 23, 24, 
@@ -58,7 +58,7 @@ std::bitset<32> round (const std::bitset<32> &half_block, const std::bitset<48> 
     s_box[7][3] = {2,	1,	14,	7,	4,	10,	8,	13,	15,	12,	9,	0,	3,	5,	6,	11};
 
 
-    std::bitset<32> outputBlock;   // 32 bit compression
+    bitset<32> outputBlock;   // 32 bit compression
     
     for (int i = 0, x = 0, out = 0; i <= 42; i += 6, ++x) {
         int y = 2 * expanded_block[i] + expanded_block[i + 5], z = 0, mask = 8;

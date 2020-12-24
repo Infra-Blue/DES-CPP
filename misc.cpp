@@ -1,13 +1,13 @@
 #include "header.h"
 
 extern char choice;
-extern std::string text, key;
+extern string text, key;
 
                  /**************** Helper Functions *****************/ 
 
 void error_handling () {
     if (key.size() != 8 or (choice != 'e' and choice != 'd')) {
-        std::cout << "<<< ERROR >>>" << std::endl;
+        cout << "<<< ERROR >>>" << endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -19,8 +19,8 @@ void text_padding () {
 }
 
 
-std::bitset<64> str_to_bits (const std::string& s) {
-    std::bitset<64> bs;
+bitset<64> str_to_bits (const string& s) {
+    bitset<64> bs;
     int i = 0;
     
     for (int c : s) {
@@ -36,8 +36,8 @@ std::bitset<64> str_to_bits (const std::string& s) {
 }
 
 
-std::string bits_to_str (const std::bitset<64> &b) {
-    std::string s;
+string bits_to_str (const bitset<64> &b) {
+    string s;
     
     for (int i = 0; i < 64; i += 8) {
         int mask = 1, c = 0;
