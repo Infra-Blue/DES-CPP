@@ -29,23 +29,27 @@ int bits_eval (const bitset<sz>& b, int pos, int n) {
     }
 
     return val;
-} template int bits_eval<48> (const bitset<48>&, int, int);
+} template int bits_eval (const bitset<48>&, int, int);
+
+
+template<size_t sz>
+void bits_fill (bitset<sz> &b, int val, int pos, int n) {
+    int mask = 1 << (n - 1);
+    while (mask) {
+       b[pos] = mask & val;
+       mask >>= 1;
+       ++pos;
+    }
+} template void bits_fill (bitset<32>&, int, int, int); 
 
 
 bitset<64> str_to_bits (const string& s) {
-    bitset<64> bs;
-    int i = 0;
+    bitset<64> b;
     
-    for (int c : s) {
-        int plate = 1 << 7;
-        while(plate) {
-            bs[i] = plate & c;
-            plate >>= 1;
-            ++i;
-        }
-    }
+    for (int i = 0, j = 0, sz = s.size(); i < sz; ++i, j += 8)
+        bits_fill(b, s[i], j, 8);
 
-    return bs;
+    return b;
 }
 
 

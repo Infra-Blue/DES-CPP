@@ -22,6 +22,8 @@ string des (const string&, const string&, int);
 vector<bitset<48>> generate_sub_keys (const string&, int);
 bitset<32> round (const bitset<32>&, const bitset<48>&);
 template<size_t sz> int bits_eval (const bitset<sz>&, int, int);
+template<size_t sz> void bits_fill (bitset<sz>&, int, int, int);
+
 
 
 

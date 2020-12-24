@@ -16,6 +16,6 @@ int main () {
     error_handling();
     text_padding();    
     
-    cout << "text begins |" << des(text, key, choice == 'd') << "| text ends" << endl;
+    cout << ">>>" << des(text, key, choice == 'd') << "<<<" << endl;
 }
 
