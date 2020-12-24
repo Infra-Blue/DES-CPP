@@ -8,19 +8,20 @@
 #include <algorithm>
 
 // typedefs
-using vec = std::vector<int>;
-using vec2D = std::vector<vec>;
-using vec3D = std::vector<vec2D>;
+using namespace std;
+using vec = vector<int>;
+using vec2D = vector<vec>;
+using vec3D = vector<vec2D>;
 
 // function prototypes
 void error_handling ();
 void text_padding ();
+bitset<64> str_to_bits (const string&);
+string bits_to_str (const bitset<64>&);
+string des (const string&, const string&, int);
+vector<bitset<48>> generate_sub_keys (const string&, int);
+bitset<32> round (const bitset<32>&, const bitset<48>&);
+template<size_t sz> int bits_eval (const bitset<sz>&, int, int);
 
-std::bitset<64> str_to_bits (const std::string&);
-std::string bits_to_str (const std::bitset<64>&);
-
-std::string des (const std::string&, const std::string&, int);
-std::vector<std::bitset<48>> generate_sub_keys (const std::string&, int);
-std::bitset<32> round (const std::bitset<32>&, const std::bitset<48>&);
 
 

@@ -1,12 +1,12 @@
 #include "header.h"
 enum {ENCRYPT, DECRYPT};
 
-std::vector<std::bitset<48>> sub_keys;
+vector<bitset<48>> sub_keys;
 
 
-std::bitset<64> block (const std::bitset<64> &raw) {
-    std::bitset<32> left, right;
-    std::bitset<64> ripe;
+bitset<64> block (const bitset<64> &raw) {
+    bitset<32> left, right;
+    bitset<64> ripe;
     
     // splitting raw 64-bits into two 
     for (int i = 0; i < 32; ++i) {
@@ -17,7 +17,7 @@ std::bitset<64> block (const std::bitset<64> &raw) {
     // 15 rounds
     for (int i = 0; i < 15; ++i) {
         left ^= round (right, sub_keys[i]);
-        std::swap (left, right);
+        swap (left, right);
     }
 
     // last round ~ no swap
@@ -33,17 +33,16 @@ std::bitset<64> block (const std::bitset<64> &raw) {
 }
 
 
-std::string des (const std::string& text, const std::string& key, int MODE) {
-    std::string output;
+string des (const string& text, const string& key, int MODE) {
+    string output;
     sub_keys = generate_sub_keys(key, MODE);
     
     if (MODE == ENCRYPT) for (int i = 0, sz = text.size(); i < sz; i += 8)
         output.append(block(str_to_bits(text.substr(i, 8))).to_string());
 
     else for (int i = 0, sz = text.size(); i < sz; i += 64)
-        output.append(bits_to_str(block(std::bitset<64>(text.substr(i, 64)))));
+        output.append(bits_to_str(block(bitset<64>(text.substr(i, 64)))));
 
-    output.push_back('\0');
     return output;
 }
 
