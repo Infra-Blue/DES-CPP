@@ -8,6 +8,7 @@ void rotate (bitset<28> &block) {
     block[27] = rightMost;
 }
 
+
 // this function constructs 16 48-bit sub-keys from a single key-string
 vector<bitset<48>> generate_sub_keys (const string &key, int MODE) {
     bitset<64> bit_key (str_to_bits(key));  // converting key-string for bitwise operation
@@ -28,7 +29,7 @@ vector<bitset<48>> generate_sub_keys (const string &key, int MODE) {
     }
     
     for (int i = 0; i < 16; ++i) {
-        auto &sk = (MODE ? sub_keys[15 - i] : sub_keys[i]);   // shedule-direction depends on MODE (Encryption / Decryption)   
+        auto &sk = (MODE == DECRYPT ? sub_keys[15 - i] : sub_keys[i]);   // shedule-direction depends on MODE (Encryption / Decryption)   
 
         rotate(left_1);
         rotate(right_1);

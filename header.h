@@ -16,12 +16,12 @@ using vec3D = vector<vec2D>;
 // function prototypes
 void error_handling ();
 void text_padding ();
-
 bitset<64> str_to_bits (const string&);
 string bits_to_str (const bitset<64>&);
-
 string des (const string&, const string&, int);
 vector<bitset<48>> generate_sub_keys (const string&, int);
 bitset<32> round (const bitset<32>&, const bitset<48>&);
+template<size_t sz> int bits_eval (const bitset<sz>&, int, int);
+
 
 
