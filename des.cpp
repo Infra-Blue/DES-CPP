@@ -43,7 +43,6 @@ string des (const string& text, const string& key, int MODE) {
     else for (int i = 0, sz = text.size(); i < sz; i += 64)
         output.append(bits_to_str(block(bitset<64>(text.substr(i, 64)))));
 
-    output.push_back('\0');
     return output;
 }
 
