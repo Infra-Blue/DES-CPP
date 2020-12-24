@@ -66,6 +66,12 @@ bitset<32> round (const bitset<32> &half_block, const bitset<48> &sub_key) {
         }
     }
 
+    // Straight P box
+    vec straightP {15, 6, 19, 20, 28, 11, 27, 16, 0, 14, 22, 25, 4, 17, 30, 9, 1, 7, 23, 13, 31, 26, 2, 8, 18, 12, 29, 5, 21, 10, 3, 24};
+    
+    for (int i = 0; i < 32; ++i)
+        outputBlock[i] = outputBlock[straightP[i]];
+
     return outputBlock;
 }
 
